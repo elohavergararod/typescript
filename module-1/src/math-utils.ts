@@ -1,28 +1,28 @@
-export function calcularMedia(array: number[]): number | null {
+export function calculateMean(array: number[]): number | null {
   if (array.length === 0) return null;
 
-  const suma = array.reduce((acc, val) => acc + val, 0);
-  return suma / array.length;
+  const sum = array.reduce((acc, value) => acc + value, 0);
+  return sum / array.length;
 }
 
-export function calcularMediana(array: number[]): number | null {
+export function calculateMedian(array: number[]): number | null {
   if (array.length === 0) return null;
 
-  const ordenado = [...array].sort((a, b) => a - b);
-  const mitad = Math.floor(ordenado.length / 2);
+  const sorted = [...array].sort((a, b) => a - b);
+  const middle = Math.floor(sorted.length / 2);
 
-  if (ordenado.length % 2 === 0) {
-    return (ordenado[mitad - 1] + ordenado[mitad]) / 2;
+  if (sorted.length % 2 === 0) {
+    return (sorted[middle - 1] + sorted[middle]) / 2;
   }
 
-  return ordenado[mitad];
+  return sorted[middle];
 }
 
-export function filtrarAtipicos(array: number[], limite: number): number[] {
+export function filterOutliers(array: number[], limit: number): number[] {
   if (array.length === 0) return [];
 
-  const media = calcularMedia(array);
-  if (media === null) return [];
+  const mean = calculateMean(array);
+  if (mean === null) return [];
 
-  return array.filter(num => Math.abs(num - media) <= limite);
+  return array.filter(num => Math.abs(num - mean) <= limit);
 }
